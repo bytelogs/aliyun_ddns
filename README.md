@@ -15,7 +15,24 @@ pip install requests
 
 - 修改comfig.json文件
 
-将config_template.json文件复制（或修改）为config.json，并修改里面的内容；
+将config_template.json文件复制（或修改）为config.json，并修改里面的内容；首先在阿里云dns管理上添加一条记录，IP的值可以随便填写一个；
+
+```json
+
+{
+  "access_key_id": "mykeyid",       
+
+  "access_key_secret": "mykeyid_secret",
+
+  "domain": "mydomain.com",
+
+  "sub_domain": "intranet"
+
+}
+
+```
+
+
 
 - 将 aliddns.py 加入到任务计划
 
