@@ -20,6 +20,6 @@ pip install requests
 - 将 aliddns.py 加入到任务计划
 
 ```shell
-3/* * * * * /usr/sbin/python3 /usr/local/aliyun_ddns/aliddns.py
+*/3 * * * * /usr/sbin/python3 /usr/local/aliyun_ddns/aliddns.py
 ```
 
