@@ -1,0 +1,7 @@
+{
+  "access_key_id": "mykeyid",
+  "access_key_secret": "mykeyid_secret",
+  "domain": "mydomain.com",
+  "sub_domain": "intranet"
+}
+
