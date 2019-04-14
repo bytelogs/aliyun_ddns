@@ -8,9 +8,17 @@
 - 安装阿里云sdk
 
 ```python
+# python3 
 pip install aliyun-python-sdk-core-v3
 pip install aliyun-python-sdk-alidns
 pip install requests
+
+
+# python2
+pip install aliyun-python-sdk-core
+pip install aliyun-python-sdk-alidns
+pip install requests
+
 ```
 
 - 修改comfig.json文件
