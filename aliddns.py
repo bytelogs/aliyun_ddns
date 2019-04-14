@@ -5,10 +5,7 @@
 # @File      :aliddns.py
 
 """
-python3环境
-
 https://ifconfig.co/json
-https://wtfismyip.com/text
 https://api.aliyun.com/
 """
 import datetime
@@ -50,7 +47,8 @@ def get_domain_record(client, domain, sub_domain):
     except Exception as e_message:
         return 'An error occurred! Error MSG: ' + str(e_message)
 
-    else:
+    else: 
+        # python3 需要解码，python2请将 response = response.decode() 注释
         response = response.decode()
         response_dict = json.JSONDecoder().decode(response)['DomainRecords']['Record']
         result_dict = {}
