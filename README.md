@@ -32,7 +32,12 @@ pip install requests
 
 ```
 
+- python2 和 python3兼容
 
+```
+代码默认是python3环境；
+如果要在python2.7中运行，请将52行代码 response = response.decode() 注释
+```
 
 - 将 aliddns.py 加入到任务计划
 
@@ -40,3 +45,8 @@ pip install requests
 */3 * * * * /usr/sbin/python3 /usr/local/aliyun_ddns/aliddns.py
 ```
 
+- 日志记录
+
+```
+如果公网IP有变化，会将当前的IP写入到文件
+```
