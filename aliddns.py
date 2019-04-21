@@ -96,11 +96,11 @@ def write_logs(current_ip):
     write update ip address log to file
     """
     logging.basicConfig(
-                level=logging.INFO,
-                format='%(asctime)s %(levelname)s %(message)s',
-                datefmt='[%Y-%m-%d %H:%M:%S]',
-                filename='./aliyundns.log',
-                filemode='a')
+                level = logging.INFO,
+                format = '%(asctime)s %(levelname)s %(message)s',
+                datefmt = '[%Y-%m-%d %H:%M:%S]',
+                filename = sys.path[0] + '/aliyundns.log',
+                filemode = 'a')
     return logging.info(current_ip)
 
 
