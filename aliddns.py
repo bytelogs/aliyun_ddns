@@ -23,10 +23,17 @@ def get_public_ip():
     get public ip address
     return ip_value
     """
+    url = 'https://ifconfig.co/json'
+    headers = {
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36'
+        }
+
     try:
-        get_ip_req = requests.get('https://ifconfig.co/json', timeout=30).content.decode()
+        get_ip_req = requests.get(url, headers=headers, timeout=30).content.decode()
+
     except Exception as e_message:
         return 'An error occurred! Error MSG: ' + str(e_message)
+
     else:
         current_ip = json.loads(get_ip_req)['ip']
         return current_ip
