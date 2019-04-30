@@ -29,7 +29,8 @@ def get_public_ip():
         }
 
     try:
-        get_ip_req = requests.get(url, headers=headers, timeout=30).content.decode()
+        get_ip_req = requests.get(url, headers=headers, verify= True).content.decode()
+
 
     except Exception as e_message:
         return 'An error occurred! Error MSG: ' + str(e_message)
@@ -89,15 +90,6 @@ def update_domain_record(client, sub_domain, current_ip, record_id):
         return response
 
 
-def write_log(current_ip):
-    """
-    write update ip address log to file
-    """
-    time_now = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    with open(sys.path[0] + '/aliddns.log', 'a') as fd:
-        fd.write('[' + time_now + ']' + ' ' + str(current_ip) + '\n')
-
-
 def write_logs(current_ip):
     """
     write update ip address log to file
@@ -145,8 +137,9 @@ if __name__ == '__main__':
     record_id = domain_record['RecordId']
 
     if sub_domain_ip != current_ip:
+
         # 更新阿里云dns记录
         update_domain_record(client, sub_domain, current_ip, record_id)
+
         # 将当前公网ip写入到日志
-        #write_log(current_ip)
         write_logs(current_ip)
