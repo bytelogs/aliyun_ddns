@@ -18,26 +18,27 @@ from aliyunsdkcore.client import AcsClient
 from aliyunsdkalidns.request.v20150109.UpdateDomainRecordRequest import UpdateDomainRecordRequest
 
 
-def get_public_ip():
+def get_pub_ip():
     """
     get public ip address
     return ip_value
     """
-    url = 'https://ifconfig.co/json'
+
+    url = 'https://wtfismyip.com/text'
     headers = {
         'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36'
         }
 
     try:
-        get_ip_req = requests.get(url, headers=headers, verify= True).content.decode()
+        get_ip_req = requests.get(url, headers=headers, verify= True).content.decode().strip()
 
 
     except Exception as e_message:
         return 'An error occurred! Error MSG: ' + str(e_message)
 
     else:
-        current_ip = json.loads(get_ip_req)['ip']
-        return current_ip
+
+        return get_ip_req
 
 
 def get_domain_record(client, domain, sub_domain):
@@ -119,8 +120,9 @@ def get_conf():
 
 
 if __name__ == '__main__':
+
     # 获取当前公网IP地址
-    current_ip = get_public_ip()
+    current_ip = get_pub_ip()
 
     # 获取本地文件配置参数
     conf = get_conf()
@@ -136,7 +138,9 @@ if __name__ == '__main__':
     sub_domain_ip = domain_record['Value']
     record_id = domain_record['RecordId']
 
+
     if sub_domain_ip != current_ip:
+
 
         # 更新阿里云dns记录
         update_domain_record(client, sub_domain, current_ip, record_id)
